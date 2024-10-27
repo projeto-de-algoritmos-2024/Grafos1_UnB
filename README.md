@@ -3,13 +3,11 @@
 **Número da Lista**: 12<br>
 **Conteúdo da Disciplina**: Grafos1<br>
 
-
 ## Alunos
 | Matrícula  | Aluno |
 |------------| -- |
 | 22/1031149 |  Danilo César Tertuliano Melo |
 | 22/1008150 |  João Antonio Ginuino Carvalho |
-
 
 ## Sobre 
 Descreva os objetivos do seu projeto e como ele funciona. 

@@ -4,9 +4,9 @@
 **Conteúdo da Disciplina**: Grafos1<br>
 
 ## Alunos
-|Matrícula | Aluno |
-| -- | -- |
-| xx/xxxxxx  |  Danilo César Tertuliano Melo |
+| Matrícula  | Aluno |
+|------------| -- |
+| 22/1031149 |  Danilo César Tertuliano Melo |
 | 22/1008150 |  João Antonio Ginuino Carvalho |
 
 ## Sobre 

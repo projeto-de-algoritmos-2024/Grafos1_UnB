@@ -4,15 +4,28 @@
 **Conteúdo da Disciplina**: Grafos1<br>
 
 ## Alunos
-| Matrícula  | Aluno |
-|------------| -- |
-| 22/1031149 |  Danilo César Tertuliano Melo |
-| 22/1008150 |  João Antonio Ginuino Carvalho |
+| Matrícula  | Aluno                         |
+|------------|-------------------------------|
+| 22/1031149 | Danilo César Tertuliano Melo  |
+| 22/1008150 | João Antonio Ginuino Carvalho |
 
 ## Sobre 
 Descreva os objetivos do seu projeto e como ele funciona. 
 
 ## Screenshots
+
+<div align="center">
+<div align="center"><img src= "?raw=true"/></div>
+</div>
+
+<div align="center">
+<div align="center"><img src= "?raw=true"/></div>
+</div>
+
+<div align="center">
+<div align="center"><img src= "?raw=true"/></div>
+</div>
+
 Adicione 3 ou mais screenshots do projeto em funcionamento.
 
 ## Instalação 

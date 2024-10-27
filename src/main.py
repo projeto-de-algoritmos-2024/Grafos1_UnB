@@ -1,5 +1,6 @@
 from lark import Lark, Transformer
 from neo4j import GraphDatabase
+import csv
 
 uri = "bolt://localhost:7687"
 user = "JSS"
@@ -93,6 +94,12 @@ def find_node(node_codigo):
     return result if result else None
 
 def create_relationship(node1_codigo, node2_codigo, relationship_type):
+    if node1_codigo.startswith("IDENT"):
+        node1_codigo = node1_codigo[5:]
+
+    if node2_codigo.startswith("IDENT"):
+        node2_codigo = node2_codigo[5:]
+
     if find_node(node1_codigo) is None:
         if node1_codigo.startswith("OR"):
             create_or_node(node1_codigo)
@@ -127,29 +134,35 @@ def create_relationship(node1_codigo, node2_codigo, relationship_type):
         print(f"Error executing query: {e}")
         return None
 
-def add_tree(node, root_name, parent=None, level=0):
-    indent = "  " * level
+def add_tree(node, root_name, type, parent=None, level=0):
+    # indent = "  " * level
     if parent is None:
         parent_name = root_name
     else:
         parent_name = parent["type"]
 
     if parent is None:
-        print(f"{indent}{parent_name}-{node['type']}{node['value']}")
-        create_relationship(parent_name, f"{node['type']}{node['value']}", "pre")
+        # print(f"{indent}{parent_name}-{node['type']}{node['value']}")
+        create_relationship(parent_name, f"{node['type']}{node['value']}", type)
     elif node["type"] == "IDENT":
-        print(f"{indent}{parent_name}{parent['value']}-{node['value']}")
-        create_relationship(f"{parent_name}{parent['value']}", node['value'], "pre")
+        # print(f"{indent}{parent_name}{parent['value']}-{node['value']}")
+        create_relationship(f"{parent_name}{parent['value']}", node['value'], type)
     else:
-        print(f"{indent}{parent_name}{parent['value']}-{node['type']}{node['value']}")
-        create_relationship(f"{parent_name}{parent['value']}", f"{node['type']}{node['value']}", "pre")
+        # print(f"{indent}{parent_name}{parent['value']}-{node['type']}{node['value']}")
+        create_relationship(f"{parent_name}{parent['value']}", f"{node['type']}{node['value']}", type)
 
     for child in node.get("children", []):
-        add_tree(child, root_name, node, level + 1)
+        add_tree(child, root_name,type, node, level + 1)
 
-
-
-expression = "( ( LET0134 E LET0222 E LET0138 E LET0226 E LET0052 E LET0054 ) OU ( LET0182 E LET0202 E LET0186 E LET0206 E LET0052 E LET0054 ) OU ( LET0142 E LET0230 E LET0052 E LET0054 ) OU ( LET0190 E LET0210 E LET0052 E LET0054 ) OU ( LET0052 E LET0054 E LET0426 E LET0427 E LET0429 E LET0430 E LET0002 ) OU ( LET0052 E LET0054 E LET0429 E LET0430 E LET0003 E LET0004 E LET0002 ) )"
-parsed_expr = parse_expression(expression)
-
-add_tree(parsed_expr, 'TESTE')
+with open('requisitos.csv', mode='r', encoding='utf-8') as file:
+    csv_reader = csv.reader(file)
+    header = next(csv_reader, None)
+    for row in csv_reader:
+        if len(row) > 1:
+            name = row[0]
+            if row[1] != "":
+                add_tree(parse_expression(row[1]), name, "prerequisito")
+            if row[2] != "":
+                add_tree(parse_expression(row[2]), name, "corequisito")
+            if row[3] != "":
+                add_tree(parse_expression(row[3]), name, "equivalencia")

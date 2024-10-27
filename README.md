@@ -14,17 +14,14 @@ Descreva os objetivos do seu projeto e como ele funciona.
 
 ## Screenshots
 
-<div align="center">
-<div align="center"><img src= "?raw=true"/></div>
-</div>
 
-<div align="center">
-<div align="center"><img src= "?raw=true"/></div>
-</div>
+<div align="center"><img src= "https://raw.githubusercontent.com/projeto-de-algoritmos-2024/Grafos1_UnB/refs/heads/main/Images/grafoperto.jpg?raw=true"/></div>
 
-<div align="center">
-<div align="center"><img src= "?raw=true"/></div>
-</div>
+<div align="center"><img src= "https://raw.githubusercontent.com/projeto-de-algoritmos-2024/Grafos1_UnB/refs/heads/main/Images/nos.jpg?raw=true"/></div>
+
+<div align="center"><img src= "https://raw.githubusercontent.com/projeto-de-algoritmos-2024/Grafos1_UnB/refs/heads/main/Images/grafolonge.jpg?raw=true"/></div>
+
+<div align="center"><img src= "https://raw.githubusercontent.com/projeto-de-algoritmos-2024/Grafos1_UnB/refs/heads/main/Images/grafoaproximado.jpg?raw=true"/></div>
 
 Adicione 3 ou mais screenshots do projeto em funcionamento.
 

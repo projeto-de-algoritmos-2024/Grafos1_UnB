@@ -1,6 +1,7 @@
 from lark import Lark, Transformer
 from neo4j import GraphDatabase
 import csv
+import sys
 
 uri = "bolt://localhost:7687"
 user = "JSS"
@@ -8,6 +9,8 @@ password = "Grafos1-UnB"
 
 
 driver = GraphDatabase.driver(uri, auth=(user, password))
+
+print("\033[92mBanco conectado com sucesso!\033[0m")
 
 grammar = """
     ?start: expr
@@ -87,6 +90,11 @@ def create_or_node(code):
     properties = {"codigo": code}
     add_node(label, properties)
 
+def create_end_node(code):
+    label = "END"
+    properties = {"codigo": code}
+    add_node(label, properties)
+
 def find_node(node_codigo):
     query = "MATCH (n) WHERE n.codigo = $node_codigo RETURN n"
     parameters = {"node_codigo": node_codigo}
@@ -111,6 +119,8 @@ def create_relationship(node1_codigo, node2_codigo, relationship_type):
     if find_node(node2_codigo) is None:
         if node2_codigo.startswith("OR"):
             create_or_node(node2_codigo)
+        elif node2_codigo.startswith("END"):
+            create_end_node(node2_codigo)
         elif node2_codigo.startswith("AND"):
             create_and_node(node2_codigo)
         else:
@@ -154,10 +164,14 @@ def add_tree(node, root_name, type, parent=None, level=0):
     for child in node.get("children", []):
         add_tree(child, root_name,type, node, level + 1)
 
+
 with open('requisitos.csv', mode='r', encoding='utf-8') as file:
-    csv_reader = csv.reader(file)
-    header = next(csv_reader, None)
-    for row in csv_reader:
+    csv_reader = list(csv.reader(file))
+    header = csv_reader
+    total_lines = len(csv_reader)
+
+    print("\033[92mArquivo de matérias encontrado!\033[0m")
+    for index, row in enumerate(csv_reader, start=1):
         if len(row) > 1:
             name = row[0]
             if row[1] != "":
@@ -166,3 +180,13 @@ with open('requisitos.csv', mode='r', encoding='utf-8') as file:
                 add_tree(parse_expression(row[2]), name, "corequisito")
             if row[3] != "":
                 add_tree(parse_expression(row[3]), name, "equivalencia")
+
+            if row[1] == "":
+                create_relationship(name, "END00", "prerequisito")
+
+        progress = int((index / total_lines) * 40)
+        bar = "#" * progress + "-" * (40 - progress)
+        sys.stdout.write(f"\r[{bar}] {index}/{total_lines} linhas processadas")
+        sys.stdout.flush()
+    print("\033[92m\nProcessamento concluído!\033[0m")
+

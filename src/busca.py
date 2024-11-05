@@ -37,10 +37,39 @@ def print_adjacency_list(adjacency_list):
         print(f"{node} -> {' -> '.join(neighbors)}")
 
 
-query = """
-MATCH caminho = (n {codigo: 'FGA0060'})-[:prerequisito|corequisito*0..]->(neighbor)
+cod = input("Digite o código da matéria: ")
+
+query = f"""
+MATCH caminho = (n {{codigo: '{cod}'}})-[:prerequisito|corequisito*0..]->(neighbor)
 RETURN caminho
 """
 
 adjacency_list = build_adjacency_list(query)
 print_adjacency_list(adjacency_list)
+
+def menor_caminho(grafo, inicio):
+    fila = deque([[inicio]])
+    visitados = set()
+    
+    while fila:
+        caminho = fila.popleft()
+        no_atual = caminho[-1]
+        
+        if no_atual not in grafo or not grafo[no_atual]:
+            return caminho
+        
+        if no_atual not in visitados:
+            visitados.add(no_atual)
+            for vizinho in grafo.get(no_atual, []):
+                novo_caminho = list(caminho)
+                novo_caminho.append(vizinho)
+                fila.append(novo_caminho)
+    
+    return None
+
+caminho = menor_caminho(adjacency_list,cod)
+
+if caminho:
+    print("O menor caminho até o primeiro nó sem saída é:", " -> ".join(caminho))
+else:
+    print(f"Não há nó sem saída acessível a partir de {cod}.")

@@ -18,7 +18,7 @@ Neo4j e para realizar a busca de menor caminho subimos o grafo na memória e rea
 Os dados utilizados nesse projeto foram disponibilizados na página https://sigaa.unb.br/sigaa/public/turmas/listar.jsf no dia
 23/09/2024.
 
-> Para ver o video de apresentação clique [aqui](https://youtu.be/0t8uElQ3kTg?si=GjrLo5jAtkJSuw_S).
+> Para ver o video de apresentação clique [aqui](https://www.youtube.com/watch?v=0t8uElQ3kTg).
 
 ## Screenshots
 
@@ -78,4 +78,4 @@ Em seguida após inserir todos os nós é basta executar o busca.py que irá fun
 
 ### Apresentação
 
-> Para ver o video de apresentação clique [aqui]().
+> Para ver o video de apresentação clique [aqui](https://www.youtube.com/watch?v=0t8uElQ3kTg).

@@ -26,13 +26,13 @@ Os dados utilizados nesse projeto foram disponibilizados na página https://siga
 Figura 1 - Grafo no Neo4j
 </center>
 
-[//]: # (<div align="center"><img src= "https://raw.githubusercontent.com/projeto-de-algoritmos-2024/Grafos1_UnB/refs/heads/main/Images/nos.jpg?raw=true"/></div>)
+<div align="center"><img src= "https://raw.githubusercontent.com/projeto-de-algoritmos-2024/Grafos1_UnB/refs/heads/main/Images/busca.png?raw=true"/></div>
 
 <center>
 Figura 2 - Realizando a busca
 </center>
 
-[//]: # (<div align="center"><img src= "https://raw.githubusercontent.com/projeto-de-algoritmos-2024/Grafos1_UnB/refs/heads/main/Images/grafolonge.jpg?raw=true"/></div>)
+<div align="center"><img src= "https://raw.githubusercontent.com/projeto-de-algoritmos-2024/Grafos1_UnB/refs/heads/main/Images/grafo.png?raw=true"/></div>
 
 <center>
 Figura 3 - Grafo plotado do menor caminho possível
@@ -40,18 +40,24 @@ Figura 3 - Grafo plotado do menor caminho possível
 
 [//]: # (<div align="center"><img src= "https://raw.githubusercontent.com/projeto-de-algoritmos-2024/Grafos1_UnB/refs/heads/main/Images/grafoaproximado.jpg?raw=true"/></div>)
 
-Adicione 3 ou mais screenshots do projeto em funcionamento.
+
 
 ## Instalação 
 **Linguagem**: Python<br>
 **Framework**: (caso exista)<br>
 
 > pip install lark-parser
+> pip install neo4j
+> pip install networkx
+> pip install ttkthemes
+> pip install matplotlib
 
-Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
+Além de ter o neo4j baixado.
 
 ## Uso 
-Explique como usar seu projeto caso haja algum passo a passo após o comando de execução.
+
+Primeiro é necessario rodar o popula.py e com um database criado dentro do neo4j, com senha e usuário sendo "JSS" e "Grafos1-UnB" respectivamente,
+Em seguida após inserir todos os nós é basta executar o busca.py que irá funcionar corretamente.
 
 ## Outros 
 

@@ -68,4 +68,6 @@ Em seguida após inserir todos os nós é basta executar o busca.py que irá fun
 <div align="center"><img src= "https://raw.githubusercontent.com/projeto-de-algoritmos-2024/Grafos1_UnB/refs/heads/main/Images/mapaMestre.jpg?raw=true"/></div>
 
 
+### Reconstruct Itinerary
 
+> Para complementar a nota foi realizada a questao "Reconstruct Itinerary" do leetcode, onde é possível ver o resultado clicando [aqui](/src/ReconstructItinerary.md).
